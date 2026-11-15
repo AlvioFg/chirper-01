@@ -2,19 +2,19 @@
 
 <div class="card bg-base-100 shadow">
     <div class="card-body">
-        <div class="flex space-x-3">
+        <div class="flex items-start gap-4">
             @if($chirp->user)
                 <div class="avatar">
-                    <div class="size-10 rounded-full">
-                        <img src="<https://avatars.laravel.cloud/>{{ urlencode($chirp->user->email) }}"
+                    <div class="w-10 h-10 rounded-full object-cover shrink-0">
+                        <img src="https://avatars.laravel.cloud/{{ urlencode($chirp->user->email) }}"
                              alt="{{ $chirp->user->name }}'s avatar"
                              class="rounded-full" />
                     </div>
                 </div>
             @else
                 <div class="avatar placeholder">
-                    <div class="size-10 rounded-full">
-                        <img src="<https://avatars.laravel.cloud/f61123d5-0b27-434c-a4ae-c653c7fc9ed6?vibe=stealth>"
+                    <div class="w-10 h-10 rounded-full object-cover shrink-0">
+                        <img src="https://avatars.laravel.cloud/f61123d5-0b27-434c-a4ae-c653c7fc9ed6?vibe=stealth"
                              alt="Anonymous User"
                              class="rounded-full" />
                     </div>
