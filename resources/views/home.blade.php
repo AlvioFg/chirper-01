@@ -7,7 +7,8 @@
         <h1 class="text-3xl font-bold mt-8">Latest Chirps</h1>
         <div class="card bg-base-100 shadow mt-8">
             <div class="card-body">
-                <form>
+                <form method="post" action="/chirper">
+                    @csrf
                     <div class="form-control w-full">
                         <textarea name="message" placeholder="Lagi mikirin apa hayoo?" class="textarea textarea-bordered w-full resize-none"
                                   rows="4" maxlength="255" required>

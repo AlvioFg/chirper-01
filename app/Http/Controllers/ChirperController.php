@@ -33,7 +33,15 @@ class ChirperController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        Chirp::create([
+            'message' => $request->message,
+            ]);
+
+            return redirect('/')->with('success', 'Chirp has been added');
     }
 
     /**
