@@ -13,7 +13,7 @@ class ChirperController extends Controller
     public function index()
     {
         $chirps = Chirp::with('user')
-            ->latest()
+            ->latest(50)
             ->get();
 
         return view('home', compact('chirps'));
