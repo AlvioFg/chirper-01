@@ -35,13 +35,18 @@ class ChirperController extends Controller
     {
         $request->validate([
             'message' => 'required|string|max:255',
+        ],
+        [
+            'message.required' => 'Please tulis apa aja, jan dikosongin!',
+            'message.max' => 'Hampura euy, tong leuwih teuing ti 255 karakter.',
         ]);
 
         Chirp::create([
             'message' => $request->message,
+            'user_id' => null
             ]);
 
-            return redirect('/')->with('success', 'Chirp has been added');
+            return redirect('/')->with('success', 'Chirp maneh geus disebar.');
     }
 
     /**
@@ -55,9 +60,9 @@ class ChirperController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Chirp $chirp)
     {
-        //
+        return view('chirper.edit', compact('chirp'));
     }
 
     /**
@@ -65,7 +70,7 @@ class ChirperController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
     }
 
     /**

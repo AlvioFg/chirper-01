@@ -12,7 +12,7 @@
                     <div class="form-control w-full">
                         <textarea
                             name="message"
-                            placeholder="What's on your mind?"
+                            placeholder="Keur mikiran naon hayooo?"
                             class="textarea textarea-bordered w-full resize-none @error('message') textarea-error @enderror"
                             rows="4"
                             maxlength="255"

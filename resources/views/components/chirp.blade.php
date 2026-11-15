@@ -28,6 +28,20 @@
                     <span class="text-sm text-base-content/60">{{ $chirp->created_at->diffForHumans() }}</span>
                 </div>
 
+                <div class="flex gap-1">
+                    <a href="/chirper/{{ $chirp->id }}/edit" class="btn btn-ghost btn-xs">
+                        Edit
+                    </a>
+                    <form method="post" action="/chirper/{{ $chirp->id }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Beneran ek dihapus ieu teh?')"
+                                class="btn btn-ghost btn-xs text-error">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+
                 <p class="mt-1">
                     {{ $chirp->message }}
                 </p>
