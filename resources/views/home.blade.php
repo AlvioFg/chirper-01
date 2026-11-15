@@ -5,6 +5,24 @@
 
     <div class="max-w-2xl mx-auto">
         <h1 class="text-3xl font-bold mt-8">Latest Chirps</h1>
+        <div class="card bg-base-100 shadow mt-8">
+            <div class="card-body">
+                <form>
+                    <div class="form-control w-full">
+                        <textarea name="message" placeholder="Lagi mikirin apa hayoo?" class="textarea textarea-bordered w-full resize-none"
+                                  rows="4" maxlength="255" required>
+
+                        </textarea>
+                    </div>
+
+                    <div class="mt-4 flex items-center justify-end">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            Sebarkeun
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <div class="mt-8 flex flex-col gap-4">
             @forelse ($chirps as $chirp)
