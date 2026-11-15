@@ -10,11 +10,19 @@
                 <form method="post" action="/chirper">
                     @csrf
                     <div class="form-control w-full">
-                        <textarea name="message" placeholder="Lagi mikirin apa hayoo?" class="textarea textarea-bordered w-full resize-none"
-                                  rows="4" maxlength="255" required>
+                        <textarea
+                            name="message"
+                            placeholder="What's on your mind?"
+                            class="textarea textarea-bordered w-full resize-none @error('message') textarea-error @enderror"
+                            rows="4"
+                            maxlength="255"
+                            required
+                        >{{ old('message') }}</textarea>
 
-                        </textarea>
+                        @error('message')
+                            <span class="label-text-alt text-error"> {{ $message }}</span>
                     </div>
+                    @enderror
 
                     <div class="mt-4 flex items-center justify-end">
                         <button type="submit" class="btn btn-primary btn-sm">
