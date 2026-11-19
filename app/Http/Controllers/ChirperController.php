@@ -68,16 +68,30 @@ class ChirperController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Chirp $chirp)
     {
+        $request->validate([
+            'message' => 'required|string|max:255',
+        ], [
+            'message.required' => 'Please tulis apa aja, jan dikosongin!',
+            'message.max' => 'Curhat naonsih meni loba loba teuing'
+            ]
+        );
 
+        $chirp->update([
+            'message' => $request->message,
+        ]);
+
+        return redirect('/')->with('success', 'Curhatan maneh geus diupdate.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(Chirp $chirp)
     {
-        //
+        $chirp->delete();
+
+        return redirect('/')->with('success', 'Curhatan maneh geus dihapus.');
     }
 }
