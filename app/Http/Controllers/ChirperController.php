@@ -41,12 +41,9 @@ class ChirperController extends Controller
             'message.max' => 'Hampura euy, tong leuwih teuing ti 255 karakter.',
         ]);
 
-        Chirp::create([
-            'message' => $request->message,
-            'user_id' => null
-            ]);
+        auth()->user()->chirps()->create([$request->all()]);
 
-            return redirect('/')->with('success', 'Chirp maneh geus disebar.');
+        return redirect('/')->with('success', 'Chirp maneh geus disebar.');
     }
 
     /**
@@ -62,6 +59,7 @@ class ChirperController extends Controller
      */
     public function edit(Chirp $chirp)
     {
+        $this->authorize('update', $chirp);
         return view('chirper.edit', compact('chirp'));
     }
 
@@ -70,6 +68,7 @@ class ChirperController extends Controller
      */
     public function update(Request $request, Chirp $chirp)
     {
+        $this->authorize('update', $chirp);
         $request->validate([
             'message' => 'required|string|max:255',
         ], [
@@ -77,10 +76,10 @@ class ChirperController extends Controller
             'message.max' => 'Curhat naonsih meni loba loba teuing'
             ]
         );
-
         $chirp->update([
             'message' => $request->message,
         ]);
+
 
         return redirect('/')->with('success', 'Curhatan maneh geus diupdate.');
     }
@@ -90,8 +89,8 @@ class ChirperController extends Controller
      */
     public function delete(Chirp $chirp)
     {
+        $this->authorize('delete', $chirp);
         $chirp->delete();
-
         return redirect('/')->with('success', 'Curhatan maneh geus dihapus.');
     }
 }
